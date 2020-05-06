@@ -8,9 +8,25 @@
 
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.anibalbastias.androidisw.ui.news.NewsFragment"
-        android:label="DashboardFragment"
+        android:name="com.anibalbastias.androidisw.ui.list.NewsFragment"
+        android:label="NewsFragment"
         tools:layout="@layout/fragment_news">
+
+        <action
+            android:id="@+id/action_newsFragment_to_newsDetailFragment"
+            app:destination="@id/newsDetailFragment"
+            app:enterAnim="@anim/fade_in_fragment"
+            app:exitAnim="@anim/fade_out_fragment"
+            app:popEnterAnim="@anim/fade_in_fragment"
+            app:popExitAnim="@anim/fade_out_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/newsDetailFragment"
+        android:name="com.anibalbastias.androidisw.ui.details.NewsDetailFragment"
+        android:label="NewsDetailFragment"
+        tools:layout="@layout/fragment_news_detail">
 
     </fragment>
 

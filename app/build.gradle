@@ -119,7 +119,8 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api project(path: ':librarybase')
+    api project(path: ':library_base')
+    api project(path: ':library_uikit')
 
     def presentationDependencies = rootProject.ext.shellChallengeDependencies
     implementation presentationDependencies.multidex

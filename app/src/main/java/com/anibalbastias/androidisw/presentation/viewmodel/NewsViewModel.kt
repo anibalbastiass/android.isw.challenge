@@ -3,8 +3,8 @@ package com.anibalbastias.androidisw.presentation.viewmodel
 import com.anibalbastias.androidisw.domain.model.DomainNewsItem
 import com.anibalbastias.androidisw.domain.usecase.GetNewsUseCase
 import com.anibalbastias.androidisw.presentation.state.SearchState
-import com.anibalbastias.library.base.extensions.LiveResult
-import com.anibalbastias.library.base.viewmodel.BaseViewModel
+import com.anibalbastias.library.base.presentation.extensions.LiveResult
+import com.anibalbastias.library.base.presentation.viewmodel.BaseViewModel
 
 open class NewsViewModel(
     private val getNewsUseCase: GetNewsUseCase
