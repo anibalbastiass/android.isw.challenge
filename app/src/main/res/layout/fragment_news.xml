@@ -48,8 +48,8 @@
             tools:title="@string/app_name">
 
             <ImageView
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="@dimen/dp_45"
+                android:layout_height="@dimen/dp_45"
                 android:gravity="start"
                 android:src="@drawable/ic_placeholder"
                 android:tint="@color/primaryColor" />
@@ -60,10 +60,10 @@
             android:id="@+id/dliNews"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginEnd="@dimen/dp_8"
+            android:layout_marginBottom="@dimen/dp_8"
             android:gravity="center"
             android:visibility="@{isLoading == true ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -74,7 +74,7 @@
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/srlNews"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/dp_0"
             android:visibility="@{isLoading == false ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -84,7 +84,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvNews"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="@dimen/dp_0"
                 android:padding="@dimen/dp_4"
                 bind:filter="@{filter}"
                 bind:loadAdapterData="@{news.items}"
@@ -94,17 +94,17 @@
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-        <!--        <include-->
-        <!--            android:id="@+id/ecNews"-->
-        <!--            layout="@layout/view_cell_shop_cart_empty"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="0dp"-->
-        <!--            android:visibility="@{cutePawsViewModel.isError() == true ? View.VISIBLE : View.GONE}"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/cutePawsToolbar"-->
-        <!--            tools:visibility="gone" />-->
+        <include
+            android:id="@+id/ecNews"
+            layout="@layout/view_cell_empty"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0"
+            android:visibility="@{isError == true ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tbNews"
+            tools:visibility="gone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -38,6 +38,10 @@ class NewsFragment : Fragment(),
     BaseBindClickHandler<UiNewsItem>,
     FilterWordListener<UiNewsItem> {
 
+    companion object {
+        const val TOKEN_TEST = "Njedq4WpjWz4KKk"
+    }
+
     private val connectionManager: ConnectivityManager by inject()
     private val newsViewModel: NewsViewModel by viewModel()
     private val uiNewsMapper: UiNewsMapper by inject()
@@ -79,7 +83,7 @@ class NewsFragment : Fragment(),
         }
 
         binding.srlNews?.initSwipe {
-            newsViewModel.getNews("Njedq4WpjWz4KKk")
+            newsViewModel.getNews(TOKEN_TEST)
         }
     }
 
@@ -117,7 +121,7 @@ class NewsFragment : Fragment(),
         newsViewModel.run {
             (newsLiveResult.value as? Result.OnSuccess<List<DomainNewsItem>>)?.let { result ->
                 newsObserver(result)
-            } ?: getNews("Njedq4WpjWz4KKk")
+            } ?: getNews(TOKEN_TEST)
         }
     }
 
