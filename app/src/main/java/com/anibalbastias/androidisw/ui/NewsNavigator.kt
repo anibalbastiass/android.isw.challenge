@@ -1,5 +1,7 @@
 package com.anibalbastias.androidisw.ui
 
+import android.app.Activity
+import android.content.Intent
 import android.view.View
 import android.widget.ImageView
 import androidx.cardview.widget.CardView
@@ -9,10 +11,19 @@ import androidx.core.view.ViewCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.FragmentNavigatorExtras
+import com.anibalbastias.androidisw.R
 import com.anibalbastias.androidisw.presentation.model.UiNewsItem
 import com.anibalbastias.androidisw.ui.list.NewsFragmentDirections
+import com.anibalbastias.library.uikit.extension.getImageUri
+import com.anibalbastias.library.uikit.extension.shareImageFromURI
+
 
 class NewsNavigator {
+
+    companion object {
+        const val IMAGE_TYPE = "image/jpeg"
+        const val KEY_ITEMS = "itemNews"
+    }
 
     var navController: NavController? = null
 
@@ -36,8 +47,33 @@ class NewsNavigator {
         ViewCompat.setTransitionName(getImageViewFromChild(view), "secondTransitionName")
 
         navController?.navigate(
-            NewsFragmentDirections.actionNewsFragmentToNewsDetailFragment().actionId,
-            bundleOf(Pair("itemNews", item)), null, extras
+            NewsFragmentDirections.actionNewsFragmentToNewsDetailFragment(item).actionId,
+            bundleOf(Pair(KEY_ITEMS, item)), null, extras
         )
+    }
+
+    fun shareNewsToEmail(activity: Activity, item: UiNewsItem) {
+        shareImageFromURI(item.imageUrl) { bitmap ->
+            val shareBody = item.description
+            val sharingIntent = Intent(Intent.ACTION_SEND)
+
+            sharingIntent.type = IMAGE_TYPE
+            sharingIntent.putExtra(
+                Intent.EXTRA_SUBJECT,
+                activity.getString(R.string.subject_email, item.title)
+            )
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
+
+            bitmap?.let {
+                sharingIntent.putExtra(Intent.EXTRA_STREAM, activity.getImageUri(it))
+            }
+
+            activity.startActivity(
+                Intent.createChooser(
+                    sharingIntent,
+                    activity.getString(R.string.share_email)
+                )
+            )
+        }
     }
 }

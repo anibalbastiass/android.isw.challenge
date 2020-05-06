@@ -141,7 +141,7 @@ class NewsFragment : Fragment(),
             is Result.OnError -> {
                 binding.isLoading?.set(false)
                 binding.isError?.set(true)
-                binding.srlNews?.isRefreshing = false
+                binding.srlNews.isRefreshing = false
 
                 if (connectionManager.isNetworkAvailable()) {
                     activity?.toast(getString(R.string.error_connection))

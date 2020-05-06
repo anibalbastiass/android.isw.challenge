@@ -28,6 +28,10 @@
         android:label="NewsDetailFragment"
         tools:layout="@layout/fragment_news_detail">
 
+        <argument
+            android:name="itemNews"
+            app:argType="com.anibalbastias.androidisw.presentation.model.UiNewsItem" />
+
     </fragment>
 
 </navigation>
