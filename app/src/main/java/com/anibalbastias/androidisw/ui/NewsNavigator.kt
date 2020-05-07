@@ -23,6 +23,7 @@ class NewsNavigator {
     companion object {
         const val IMAGE_TYPE = "image/jpeg"
         const val KEY_ITEMS = "itemNews"
+        const val SECOND_TRANSITION = "secondTransitionName"
     }
 
     var navController: NavController? = null
@@ -42,9 +43,9 @@ class NewsNavigator {
         item: UiNewsItem
     ) {
         val extras = FragmentNavigatorExtras(
-            getImageViewFromChild(view) to "secondTransitionName"
+            getImageViewFromChild(view) to SECOND_TRANSITION
         )
-        ViewCompat.setTransitionName(getImageViewFromChild(view), "secondTransitionName")
+        ViewCompat.setTransitionName(getImageViewFromChild(view), SECOND_TRANSITION)
 
         navController?.navigate(
             NewsFragmentDirections.actionNewsFragmentToNewsDetailFragment(item).actionId,

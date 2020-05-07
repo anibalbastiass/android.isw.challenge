@@ -56,7 +56,7 @@ val appModule = module {
 
     single {
         Retrofit.Builder()
-            .baseUrl(androidApplication().getString(R.string.shellchallenge_endpoint))
+            .baseUrl(androidApplication().getString(R.string.newschallenge_endpoint))
             .client(get())
             .addConverterFactory(GsonConverterFactory.create())
             .build()

@@ -9,7 +9,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 val apiTestModule = module {
-    /* Retrofit */
 
     single {
         OkHttpClient.Builder()
@@ -22,7 +21,7 @@ val apiTestModule = module {
 
     single {
         Retrofit.Builder()
-            .baseUrl(androidContext().getString(R.string.shellchallenge_endpoint))
+            .baseUrl("https://cloud.nousdigital.net/")
             .client(get())
             .addConverterFactory(GsonConverterFactory.create())
             .build()

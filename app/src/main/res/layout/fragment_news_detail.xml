@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -21,7 +20,7 @@
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/dp_0"
             android:layout_weight="1"
             android:fitsSystemWindows="true">
 
@@ -39,8 +38,8 @@
                     android:fitsSystemWindows="true"
                     android:theme="@style/ThemeOverlay.AppCompat.Dark"
                     app:contentScrim="?attr/colorPrimary"
-                    app:expandedTitleMarginEnd="72dp"
-                    app:expandedTitleMarginStart="16dp"
+                    app:expandedTitleMarginEnd="@dimen/dp_72"
+                    app:expandedTitleMarginStart="@dimen/dp_16"
                     app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
                     <ImageView
