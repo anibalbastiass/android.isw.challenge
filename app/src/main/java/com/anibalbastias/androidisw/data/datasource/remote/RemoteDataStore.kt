@@ -4,7 +4,7 @@ import com.anibalbastias.androidisw.data.datasource.remote.api.NewsApi
 import com.anibalbastias.androidisw.domain.mapper.NewsMapper
 import com.anibalbastias.androidisw.domain.model.DomainNewsItem
 import com.anibalbastias.androidisw.domain.repository.RemoteRepository
-import com.anibalbastias.library.base.extensions.await
+import com.anibalbastias.library.base.presentation.extensions.await
 
 
 open class RemoteDataStore(

@@ -2,7 +2,7 @@ package com.anibalbastias.androidisw.domain.usecase
 
 import com.anibalbastias.androidisw.domain.model.DomainNewsItem
 import com.anibalbastias.androidisw.domain.repository.RemoteRepository
-import com.anibalbastias.library.base.coroutines.ResultUseCase
+import com.anibalbastias.library.base.data.coroutines.ResultUseCase
 import kotlinx.coroutines.Dispatchers
 
 open class GetNewsUseCase(private val remoteRepository: RemoteRepository) :

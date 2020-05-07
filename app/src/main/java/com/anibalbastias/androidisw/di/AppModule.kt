@@ -11,6 +11,8 @@ import com.anibalbastias.androidisw.domain.repository.RemoteRepository
 import com.anibalbastias.androidisw.domain.usecase.GetNewsUseCase
 import com.anibalbastias.androidisw.presentation.mapper.UiNewsMapper
 import com.anibalbastias.androidisw.presentation.viewmodel.NewsViewModel
+import com.anibalbastias.androidisw.ui.NewsNavigator
+import com.anibalbastias.library.base.data.interceptor.FakeInterceptor
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -37,7 +39,7 @@ val appModule = module {
         val clientBuilder = OkHttpClient.Builder()
 
         if (BuildConfig.FLAVOR.equals("dummy")) {
-//            clientBuilder.addInterceptor(FakeInterceptor())
+            clientBuilder.addInterceptor(FakeInterceptor(androidApplication()))
         } else {
             if (BuildConfig.DEBUG) {
                 httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
@@ -54,7 +56,7 @@ val appModule = module {
 
     single {
         Retrofit.Builder()
-            .baseUrl(androidApplication().getString(R.string.shellchallenge_endpoint))
+            .baseUrl(androidApplication().getString(R.string.newschallenge_endpoint))
             .client(get())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -82,4 +84,7 @@ val appModule = module {
     // Mapper
     factory<NewsMapper>()
     factory<UiNewsMapper>()
+
+    // Navigator
+    factory<NewsNavigator>()
 }

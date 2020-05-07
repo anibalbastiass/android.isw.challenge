@@ -2,15 +2,35 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/shell_challenge_search_nav_graph"
+    android:id="@+id/news_challenge_nav_graph"
     app:startDestination="@id/newsFragment"
     tools:ignore="UnusedNavigation">
 
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.anibalbastias.androidisw.ui.news.NewsFragment"
-        android:label="DashboardFragment"
+        android:name="com.anibalbastias.androidisw.ui.list.NewsFragment"
+        android:label="NewsFragment"
         tools:layout="@layout/fragment_news">
+
+        <action
+            android:id="@+id/action_newsFragment_to_newsDetailFragment"
+            app:destination="@id/newsDetailFragment"
+            app:enterAnim="@anim/fade_in_fragment"
+            app:exitAnim="@anim/fade_out_fragment"
+            app:popEnterAnim="@anim/fade_in_fragment"
+            app:popExitAnim="@anim/fade_out_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/newsDetailFragment"
+        android:name="com.anibalbastias.androidisw.ui.details.NewsDetailFragment"
+        android:label="NewsDetailFragment"
+        tools:layout="@layout/fragment_news_detail">
+
+        <argument
+            android:name="itemNews"
+            app:argType="com.anibalbastias.androidisw.presentation.model.UiNewsItem" />
 
     </fragment>
 

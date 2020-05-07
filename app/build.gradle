@@ -11,8 +11,8 @@ android {
         applicationId "com.anibalbastias.android.isw"
         minSdkVersion androidMinSdkVersion
         targetSdkVersion androidTargetSdkVersion
-        versionCode appshellChallengeVersionCode
-        versionName appshellChallengeVersionName
+        versionCode appNewsChallengeVersionCode
+        versionName appNewsChallengeVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -31,13 +31,13 @@ android {
         prod {
             applicationIdSuffix = ".prod"
             dimension "tier"
-            resValue "string", "shellchallenge_endpoint", "$globalshellChallengeDependencies.SHELL_CHALLENGE_BASE_ENDPOINT"
+            resValue "string", "newschallenge_endpoint", "$globalNewsChallengeDependencies.NEWS_API_BASE_ENDPOINT"
         }
         dummy {
             applicationIdSuffix = ".dummy"
             versionNameSuffix = "-dummy"
             dimension "tier"
-            resValue "string", "shellchallenge_endpoint", "\"http://mock.api/\""
+            resValue "string", "newschallenge_endpoint", "\"http://mock.api/\""
         }
     }
 
@@ -108,7 +108,7 @@ android {
     }
 
     // APK Release name
-    setProperty("archivesBaseName", "iswChallengeApp-v${rootProject.ext.appshellChallengeVersionName}")
+    setProperty("archivesBaseName", "iswChallengeApp-v${rootProject.ext.appNewsChallengeVersionName}")
 }
 
 kapt {
@@ -119,9 +119,10 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api project(path: ':librarybase')
+    api project(path: ':library_base')
+    api project(path: ':library_uikit')
 
-    def presentationDependencies = rootProject.ext.shellChallengeDependencies
+    def presentationDependencies = rootProject.ext.newsChallengeDependencies
     implementation presentationDependencies.multidex
 
     // Testing

@@ -1,6 +1,7 @@
 package com.anibalbastias.androidisw
 
 import android.app.Application
+import android.os.StrictMode
 import com.anibalbastias.androidisw.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -15,5 +16,13 @@ open class App : Application() {
                 appModule
             )
         }
+
+        setupRestrictionsForShare()
+    }
+
+    private fun setupRestrictionsForShare() {
+        val builder: StrictMode.VmPolicy.Builder =
+            StrictMode.VmPolicy.Builder()
+        StrictMode.setVmPolicy(builder.build())
     }
 }
