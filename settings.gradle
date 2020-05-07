@@ -1,0 +1,4 @@
+include ':app'
+rootProject.name='android.isw.challenge'
+include ':library_base'
+include ':library_uikit'
